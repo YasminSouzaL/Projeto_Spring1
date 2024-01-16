@@ -1,4 +1,4 @@
-package com.srayasmin.Controller;
+package com.srayasmin.projetomc.controller;
 
 import java.util.ArrayList;
 import java.util.List;
@@ -8,7 +8,7 @@ import com.srayasmin.projetomc.domain.Categoria;
 @RestController
 @RequestMapping(value="/categorias")
 public class CategoriaController {
-    @GetMapping("/")
+    @GetMapping
     public List<Categoria> listar(){
         Categoria cat1 = new Categoria(1, "Informática");
         Categoria cat2 = new Categoria(2, "Escritório");
