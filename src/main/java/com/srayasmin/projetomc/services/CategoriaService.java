@@ -7,28 +7,23 @@ import org.springframework.stereotype.Service;
 
 import com.srayasmin.projetomc.domain.Categoria;
 import com.srayasmin.projetomc.repositores.CategoriaRepository;
+import com.srayasmin.projetomc.services.exceptions.ObjectNotFoundException;
 
 @Service
 public class CategoriaService {
+
     @Autowired
     private CategoriaRepository repo;
 
     public Categoria find(Integer id) {
-        if (id == null) {
-            throw new IllegalArgumentException("id cannot be null");
-        }
         Optional<Categoria> obj = repo.findById(id);
-        return obj.orElseThrow(() -> new ObjectNotFoundException("Categoria not found for ID: " + id));
+        return obj.orElseThrow(
+            () -> {
+                throw new RuntimeException(
+                    "Objeto não encontrado! Id: " + id + ", Tipo: " + Categoria.class.getName()
+                );
+            }
+        );
     }
-    // ObjectNotFoundException.java
-    public class ObjectNotFoundException extends RuntimeException {
-        public ObjectNotFoundException(String message) {
-            super(message);
-        }
-    }
-    public Categoria buscar(Integer id) {
-        throw new UnsupportedOperationException("Unimplemented method 'buscar'");
-    }
-
-    
+ 
 }
