@@ -25,5 +25,10 @@ public class CategoriaService {
             "Objeto não encontrado! Id: " + id + ", Tipo: " + Categoria.class.getName()
         ));
     }
+
+    public Categoria buscar(Integer id) {
+        // TODO Auto-generated method stub
+        throw new UnsupportedOperationException("Unimplemented method 'buscar'");
+    }
  
 }
