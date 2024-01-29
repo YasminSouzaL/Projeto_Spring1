@@ -9,6 +9,7 @@ import com.srayasmin.projetomc.domain.Categoria;
 import com.srayasmin.projetomc.repositores.CategoriaRepository;
 import com.srayasmin.projetomc.services.exceptions.ObjectNotFoundException;
 
+
 @Service
 public class CategoriaService {
 
@@ -16,14 +17,13 @@ public class CategoriaService {
     private CategoriaRepository repo;
 
     public Categoria find(Integer id) {
+        if (id == null) {
+            throw new IllegalArgumentException("Id cannot be null");
+        }
         Optional<Categoria> obj = repo.findById(id);
-        return obj.orElseThrow(
-            () -> {
-                throw new RuntimeException(
-                    "Objeto não encontrado! Id: " + id + ", Tipo: " + Categoria.class.getName()
-                );
-            }
-        );
+        return obj.orElseThrow(() -> new ObjectNotFoundException(
+            "Objeto não encontrado! Id: " + id + ", Tipo: " + Categoria.class.getName()
+        ));
     }
  
 }
