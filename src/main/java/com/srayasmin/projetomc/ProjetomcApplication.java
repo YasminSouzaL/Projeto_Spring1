@@ -8,12 +8,17 @@ import org.springframework.boot.autoconfigure.SpringBootApplication;
 
 import com.srayasmin.projetomc.domain.Categoria;
 import com.srayasmin.projetomc.domain.Cidade;
+import com.srayasmin.projetomc.domain.Cliente;
+import com.srayasmin.projetomc.domain.Endereco;
 import com.srayasmin.projetomc.domain.Estado;
 import com.srayasmin.projetomc.domain.Produto;
+import com.srayasmin.projetomc.domain.enums.TipoCliente;
 import com.srayasmin.projetomc.repositores.CategoriaRepository;
 import com.srayasmin.projetomc.repositores.CidadeRepository;
 import com.srayasmin.projetomc.repositores.EstadoRepository;
 import com.srayasmin.projetomc.repositores.ProdutoRepository;
+import com.srayasmin.projetomc.repositores.ClienteRepository;
+import com.srayasmin.projetomc.repositores.EnderecoRepository;
 @SpringBootApplication
 
 public class ProjetomcApplication implements CommandLineRunner{
@@ -23,6 +28,18 @@ public class ProjetomcApplication implements CommandLineRunner{
 
     @Autowired
     private ProdutoRepository produtoRepository;
+
+    @Autowired
+    private EstadoRepository estadoRepository;
+
+    @Autowired
+    private CidadeRepository cidadeRepository;
+
+    @Autowired
+    private ClienteRepository clienteRepository;
+
+    @Autowired
+    private EnderecoRepository enderecoRepository;
     
     public static void main(String[] args) {
         SpringApplication.run(ProjetomcApplication.class, args);
@@ -64,8 +81,24 @@ public class ProjetomcApplication implements CommandLineRunner{
 
         // Salvando os estados e cidades no banco de dados
         EstadoRepository.saveAll(Arrays.asList(est1, est2));
-        CidadeRepository.saveAll(Arrays.asList(c1, c2, c3));
+        cidadeRepository.saveAll(Arrays.asList(c1, c2, c3));
+
+        // Cliente e endereço:
+        Cliente cli1 = new Cliente(null, "Maria Silva", "maria@email", "777777", TipoCliente.PESSOAFISICA);
+        cli1.getTelefones().addAll(Arrays.asList("777777", "888888"));
+
+        Cliente cli2 = new Cliente(null, "Ana Costa", "ana@gmail", "888888", TipoCliente.PESSOAFISICA);
+        cli2.getTelefones().addAll(Arrays.asList("999999", "101010"));
+
+        Endereco e1 = new Endereco(null, "Rua Flores", "300", "Apto 303", "Jardim", "157245", cli1, c1);
+        Endereco e2 = new Endereco(null, "Avenida Matos", "105", "Sala 800", "Centro", "157246", cli1, c2);
         
+        cli1.getEnderecos().addAll(Arrays.asList(e1, e2));
+
+        // Salvando os clientes e endereços no banco de dados
+        clienteRepository.saveAll(Arrays.asList(cli1, cli2));
+        enderecoRepository.saveAll(Arrays.asList(e1, e2));
+    
     }
 
 
