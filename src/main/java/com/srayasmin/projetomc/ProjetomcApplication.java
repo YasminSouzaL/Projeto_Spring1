@@ -1,17 +1,20 @@
 package com.srayasmin.projetomc;
-import java.util.Arrays;
 
+import java.text.SimpleDateFormat;
+import java.util.Arrays;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.boot.CommandLineRunner;
 import org.springframework.boot.SpringApplication;
 import org.springframework.boot.autoconfigure.SpringBootApplication;
-
 import com.srayasmin.projetomc.domain.Categoria;
 import com.srayasmin.projetomc.domain.Cidade;
 import com.srayasmin.projetomc.domain.Cliente;
 import com.srayasmin.projetomc.domain.Endereco;
 import com.srayasmin.projetomc.domain.Estado;
+import com.srayasmin.projetomc.domain.Pagamento;
+import com.srayasmin.projetomc.domain.Pedido;
 import com.srayasmin.projetomc.domain.Produto;
+import com.srayasmin.projetomc.domain.enums.EstadoPagamento;
 import com.srayasmin.projetomc.domain.enums.TipoCliente;
 import com.srayasmin.projetomc.repositores.CategoriaRepository;
 import com.srayasmin.projetomc.repositores.CidadeRepository;
@@ -19,8 +22,8 @@ import com.srayasmin.projetomc.repositores.EstadoRepository;
 import com.srayasmin.projetomc.repositores.ProdutoRepository;
 import com.srayasmin.projetomc.repositores.ClienteRepository;
 import com.srayasmin.projetomc.repositores.EnderecoRepository;
-@SpringBootApplication
 
+@SpringBootApplication
 public class ProjetomcApplication implements CommandLineRunner{
     
     @Autowired
@@ -40,6 +43,8 @@ public class ProjetomcApplication implements CommandLineRunner{
 
     @Autowired
     private EnderecoRepository enderecoRepository;
+
+
     
     public static void main(String[] args) {
         SpringApplication.run(ProjetomcApplication.class, args);
@@ -98,8 +103,13 @@ public class ProjetomcApplication implements CommandLineRunner{
         // Salvando os clientes e endereços no banco de dados
         clienteRepository.saveAll(Arrays.asList(cli1, cli2));
         enderecoRepository.saveAll(Arrays.asList(e1, e2));
+        
+        SimpleDateFormat sdf = new SimpleDateFormat("dd/MM/yyyy HH:mm");
+        Pagamento pagto1 = new PagamentoComCartao(null, EstadoPagamento.QUITADO, ped1, 6);
+        Pedido ped1 = new Pedido(null, sdf.parse("30/09/2017 10:32"),pagto1,cli1, e1);
+
+        
     
     }
-
 
 }
