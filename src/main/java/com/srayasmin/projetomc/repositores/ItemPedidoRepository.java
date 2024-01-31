@@ -8,4 +8,5 @@ import org.springframework.stereotype.Repository;
 public interface ItemPedidoRepository extends JpaRepository<ItemPedido,Integer>{
         ItemPedido findOne(Integer id);
         
+        
 }

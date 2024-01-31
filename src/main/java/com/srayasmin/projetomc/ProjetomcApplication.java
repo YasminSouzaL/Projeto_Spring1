@@ -100,7 +100,7 @@ public class ProjetomcApplication implements CommandLineRunner{
         est2.getCidades().addAll(Arrays.asList(c2, c3));
 
         // Salvando os estados e cidades no banco de dados
-        EstadoRepository.saveAll(Arrays.asList(est1, est2));
+        estadoRepository.saveAll(Arrays.asList(est1, est2));
         cidadeRepository.saveAll(Arrays.asList(c1, c2, c3));
     
 
