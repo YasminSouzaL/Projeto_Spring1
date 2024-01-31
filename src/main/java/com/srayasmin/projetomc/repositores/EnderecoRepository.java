@@ -6,5 +6,7 @@ import org.springframework.stereotype.Repository;
 
 @Repository
 public interface EnderecoRepository extends JpaRepository<Endereco, Integer>{
-       
+    Endereco findOne(Integer id);
+
+    <S> S save(Endereco endereco);
 }
