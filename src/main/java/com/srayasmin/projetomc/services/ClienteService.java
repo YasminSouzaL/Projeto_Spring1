@@ -24,7 +24,6 @@ public class ClienteService {
     }
 
     public Cliente buscar(Integer id) {
-        // TODO Auto-generated method stub
         throw new UnsupportedOperationException("Unimplemented method 'buscar'");
     }
  

@@ -27,7 +27,6 @@ public class CategoriaService {
     }
 
     public Categoria buscar(Integer id) {
-        // TODO Auto-generated method stub
         throw new UnsupportedOperationException("Unimplemented method 'buscar'");
     }
  
