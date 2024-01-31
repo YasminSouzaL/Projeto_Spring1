@@ -33,6 +33,8 @@ public class Produto implements Serializable{
 
     private List<Categoria> categorias = new ArrayList<>();
 
+    private List<ItemPedido> itens = new ArrayList<>();
+
     public Produto(){}
 
     public Produto(Integer id, String nome, Double preco) {
@@ -41,7 +43,14 @@ public class Produto implements Serializable{
         this.nome = nome;
         this.preco = preco;
     }
-
+    //Lista de pedidos
+    public List<Pedido> getPedidos(){
+        List<Pedido> lista = new ArrayList<>();
+        for(ItemPedido x : itens){
+            lista.add(x.getPedido());
+        }
+        return lista;
+    }
     // Getters e Setters
     public Integer getId() {
         return id;
@@ -69,6 +78,14 @@ public class Produto implements Serializable{
     }
     public void setCategorias(List<Categoria> categorias){
         this.categorias = categorias;
+    }
+
+    public List<ItemPedido> getItens(){
+        return itens;
+    }
+
+    public void setItens(List<ItemPedido> itens){
+        this.itens = itens;
     }
 
     // HashCode e Equals
