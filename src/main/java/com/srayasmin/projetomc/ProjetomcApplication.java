@@ -11,6 +11,7 @@ import com.srayasmin.projetomc.domain.Cidade;
 import com.srayasmin.projetomc.domain.Cliente;
 import com.srayasmin.projetomc.domain.Endereco;
 import com.srayasmin.projetomc.domain.Estado;
+import com.srayasmin.projetomc.domain.ItemPedido;
 import com.srayasmin.projetomc.domain.Pagamento;
 import com.srayasmin.projetomc.domain.PagamentoComBoleto;
 import com.srayasmin.projetomc.domain.PagamentoComCartao;
@@ -23,6 +24,7 @@ import com.srayasmin.projetomc.repositores.CidadeRepository;
 import com.srayasmin.projetomc.repositores.EstadoRepository;
 import com.srayasmin.projetomc.repositores.PedidoRepository;
 import com.srayasmin.projetomc.repositores.ProdutoRepository;
+import com.srayasmin.projetomc.repositores.ItemPedidoRepository;
 import com.srayasmin.projetomc.repositores.ClienteRepository;
 import com.srayasmin.projetomc.repositores.EnderecoRepository;
 import com.srayasmin.projetomc.repositores.PagamentoRepository;
@@ -55,6 +57,8 @@ public class ProjetomcApplication implements CommandLineRunner{
     @Autowired
     private PagamentoRepository pagamentoRepository;
 
+    @Autowired
+    private ItemPedidoRepository itemPedidoRepository;
 
     
     public static void main(String[] args) {
@@ -83,21 +87,22 @@ public class ProjetomcApplication implements CommandLineRunner{
         categoriaRepository.saveAll(Arrays.asList(cat1, cat2));
         produtoRepository.saveAll(Arrays.asList(p1, p2, p3));
         
-        //Estados e cidades:
-        Estado est1 = new Estado(null, "São Paulo");
-        Estado est2 = new Estado(null, "Minas Gerais");
+        // Criando os estados e cidades:
+        Estado est1 = new Estado(null, "Minas Gerais");
+        Estado est2 = new Estado(null, "São Paulo");
 
-        Cidade c1 = new Cidade(null, "Belo Horizonte", est2);
-        Cidade c2 = new Cidade(null, "Campinas", est1);
-        Cidade c3 = new Cidade(null, "São Paulo", est1);
+        Cidade c1 = new Cidade(null, "Uberlândia", est1);
+        Cidade c2 = new Cidade(null, "São Paulo", est2);
+        Cidade c3 = new Cidade(null, "Campinas", est2);
 
         // Associando as cidades aos estados
-        est1.getCidades().addAll(Arrays.asList(c2, c3));
-        est2.getCidades().addAll(Arrays.asList(c1));
+        est1.getCidades().addAll(Arrays.asList(c1));
+        est2.getCidades().addAll(Arrays.asList(c2, c3));
 
         // Salvando os estados e cidades no banco de dados
-        estadoRepository.saveAll(Arrays.asList(est1, est2));
+        EstadoRepository.saveAll(Arrays.asList(est1, est2));
         cidadeRepository.saveAll(Arrays.asList(c1, c2, c3));
+    
 
         // Cliente e endereço:
         Cliente cli1 = new Cliente(null, "Maria Silva", "maria@email", "777777", TipoCliente.PESSOAFISICA);
@@ -130,6 +135,25 @@ public class ProjetomcApplication implements CommandLineRunner{
         // Salvando os pedidos e pagamentos no banco de dados
         pedidoRepository.saveAll(Arrays.asList(ped1, ped2));
         pagamentoRepository.saveAll(Arrays.asList(pagto1, pagto2));
+
+        // Associando os produtos aos pedidos
+        ItemPedido ip1 = new ItemPedido(ped1, p1, 0.00, 1, 2000.00);
+        ItemPedido ip2 = new ItemPedido(ped1, p3, 0.00, 2, 80.00);
+        ItemPedido ip3 = new ItemPedido(ped2, p2, 100.00, 1, 800.00);
+
+        // Associando os itens de pedido aos pedidos
+        ped1.getItens().addAll(Arrays.asList(ip1, ip2));
+        ped2.getItens().addAll(Arrays.asList(ip3));
+
+        // Associando os itens de pedido aos produtos
+        p1.getItens().addAll(Arrays.asList(ip1));
+        p2.getItens().addAll(Arrays.asList(ip3));
+        p3.getItens().addAll(Arrays.asList(ip2));
+
+        // Salvando os itens de pedido no banco de dados
+        pedidoRepository.saveAll(Arrays.asList(ped1, ped2));
+        itemPedidoRepository.saveAll(Arrays.asList(ip1, ip2, ip3));
+        
         
     }
 }
