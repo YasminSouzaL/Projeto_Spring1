@@ -152,8 +152,10 @@ public class ProjetomcApplication implements CommandLineRunner{
 
         // Salvando os itens de pedido no banco de dados
         pedidoRepository.saveAll(Arrays.asList(ped1, ped2));
+        pagamentoRepository.saveAll(Arrays.asList(pagto1, pagto2));
+        
+        // Salvando os itens de pedido no banco de dados
         itemPedidoRepository.saveAll(Arrays.asList(ip1, ip2, ip3));
-        
-        
+
     }
 }
