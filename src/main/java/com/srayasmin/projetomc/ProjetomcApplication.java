@@ -6,8 +6,6 @@ import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.boot.CommandLineRunner;
 import org.springframework.boot.SpringApplication;
 import org.springframework.boot.autoconfigure.SpringBootApplication;
-import org.springframework.lang.NonNull;
-//import io.micrometer.common.lang.NonNull;
 
 import com.srayasmin.projetomc.domain.Categoria;
 import com.srayasmin.projetomc.domain.Cidade;
@@ -33,7 +31,6 @@ import com.srayasmin.projetomc.repositores.EnderecoRepository;
 import com.srayasmin.projetomc.repositores.PagamentoRepository;
 
 
-@SuppressWarnings("unused")
 @SpringBootApplication
 public class ProjetomcApplication implements CommandLineRunner{
     
