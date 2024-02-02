@@ -6,6 +6,9 @@ import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.boot.CommandLineRunner;
 import org.springframework.boot.SpringApplication;
 import org.springframework.boot.autoconfigure.SpringBootApplication;
+import org.springframework.lang.NonNull;
+//import io.micrometer.common.lang.NonNull;
+
 import com.srayasmin.projetomc.domain.Categoria;
 import com.srayasmin.projetomc.domain.Cidade;
 import com.srayasmin.projetomc.domain.Cliente;
@@ -30,6 +33,7 @@ import com.srayasmin.projetomc.repositores.EnderecoRepository;
 import com.srayasmin.projetomc.repositores.PagamentoRepository;
 
 
+@SuppressWarnings("unused")
 @SpringBootApplication
 public class ProjetomcApplication implements CommandLineRunner{
     
@@ -65,6 +69,7 @@ public class ProjetomcApplication implements CommandLineRunner{
         SpringApplication.run(ProjetomcApplication.class, args);
     }
 
+    @SuppressWarnings("null")
     @Override
     public void run(String... args) throws Exception {
         Categoria cat1 = new Categoria(null, "Informática");
@@ -86,7 +91,7 @@ public class ProjetomcApplication implements CommandLineRunner{
         // Salvando as categorias e produtos no banco de dados
         categoriaRepository.saveAll(Arrays.asList(cat1, cat2));
         produtoRepository.saveAll(Arrays.asList(p1, p2, p3));
-        
+
         // Criando os estados e cidades:
         Estado est1 = new Estado(null, "Minas Gerais");
         Estado est2 = new Estado(null, "São Paulo");

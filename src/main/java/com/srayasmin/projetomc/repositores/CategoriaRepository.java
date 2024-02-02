@@ -10,6 +10,8 @@ import com.srayasmin.projetomc.domain.Categoria;
 @Repository
 public interface CategoriaRepository  extends JpaRepository<Categoria,Integer>{
 
+    Object saveAll = null;
+
     Categoria findOne(Integer id);
 
     void save(List<Categoria> asList);

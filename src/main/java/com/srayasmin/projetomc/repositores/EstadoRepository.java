@@ -11,8 +11,6 @@ import com.srayasmin.projetomc.domain.Estado;
 public interface EstadoRepository extends JpaRepository<Cidade, Integer> {
     public List<Cidade> findByEstado(Integer estadoId);
 
-    public static void saveAll(List<Estado> asList) {
-        throw new UnsupportedOperationException("Unimplemented method 'saveAll'");
-    }
+    public void saveAll(List<Estado> asList);
 }
 
