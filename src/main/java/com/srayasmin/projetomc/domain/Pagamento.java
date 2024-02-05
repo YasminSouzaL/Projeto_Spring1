@@ -1,19 +1,11 @@
-package com.srayasmin.projetomc.domain;
-
-import java.io.Serializable;
-
-import javax.persistence.Entity;
-import javax.persistence.GeneratedValue;
-import javax.persistence.GenerationType;
-import javax.persistence.Id;
-import javax.persistence.Inheritance;
-import javax.persistence.JoinColumn;
-import javax.persistence.MapsId;
-import javax.persistence.OneToOne;
+package com.yasmin.projetomc.domain;
 
 import com.fasterxml.jackson.annotation.JsonIgnore;
-import com.srayasmin.projetomc.domain.enums.EstadoPagamento;
-import javax.persistence.InheritanceType;
+import com.yasmin.projetomc.domain.enums.EstadoPagamento;
+import jakarta.persistence.*;
+
+
+import java.io.Serializable;
 
 
 @Entity

@@ -1,20 +1,11 @@
-package com.srayasmin.projetomc.domain;
-
-import java.util.ArrayList;
-import java.util.List;
-
-import javax.persistence.Entity;
-import javax.persistence.Id;
-import javax.persistence.JoinTable;
-import javax.persistence.ManyToMany;
-import javax.persistence.OneToMany;
+package com.yasmin.projetomc.domain;
 
 import com.fasterxml.jackson.annotation.JsonIgnore;
-import javax.persistence.GeneratedValue;
-import javax.persistence.GenerationType;
 
-
+import jakarta.persistence.*;
 import java.io.Serializable;
+import java.util.ArrayList;
+import java.util.List;
 
 @Entity
 public class Produto implements Serializable{
@@ -28,8 +19,8 @@ public class Produto implements Serializable{
     @JsonIgnore
     @ManyToMany
     @JoinTable(name = "PRODUTO_CATEGORIA",
-        joinColumns = @javax.persistence.JoinColumn(name = "produto_id"),
-        inverseJoinColumns = @javax.persistence.JoinColumn(name = "categoria_id")
+        joinColumns = @jakarta.persistence.JoinColumn(name = "produto_id"),
+        inverseJoinColumns = @jakarta.persistence.JoinColumn(name = "categoria_id")
     )
 
     private List<Categoria> categorias = new ArrayList<>();

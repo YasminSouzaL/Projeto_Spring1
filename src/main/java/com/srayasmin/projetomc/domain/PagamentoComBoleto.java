@@ -1,11 +1,10 @@
-package com.srayasmin.projetomc.domain;
-
-import java.util.Date;
-
-import javax.persistence.Entity;
+package com.yasmin.projetomc.domain;
 
 import com.fasterxml.jackson.annotation.JsonFormat;
-import com.srayasmin.projetomc.domain.enums.EstadoPagamento;
+
+import com.yasmin.projetomc.domain.enums.EstadoPagamento;
+import jakarta.persistence.*;
+import java.util.Date;
 @Entity
 public class PagamentoComBoleto extends Pagamento{
     private static final long serialVersionUID = 1L;

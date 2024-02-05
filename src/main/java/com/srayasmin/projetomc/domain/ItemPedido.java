@@ -1,11 +1,10 @@
-package com.srayasmin.projetomc.domain;
-
-import java.io.Serializable;
-
-import javax.persistence.EmbeddedId;
-import javax.persistence.Entity;
+package com.yasmin.projetomc.domain;
 
 import com.fasterxml.jackson.annotation.JsonIgnore;
+
+
+import jakarta.persistence.*;
+import java.io.Serializable;
 
 @Entity
 public class ItemPedido implements Serializable{

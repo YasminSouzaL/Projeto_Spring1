@@ -1,8 +1,7 @@
-package com.srayasmin.projetomc.domain;
+package com.yasmin.projetomc.domain;
 
-import javax.persistence.Entity;
-
-import com.srayasmin.projetomc.domain.enums.EstadoPagamento;
+import com.yasmin.projetomc.domain.enums.EstadoPagamento;
+import jakarta.persistence.*;
 @Entity
 public class PagamentoComCartao extends Pagamento{
     private static final long serialVersionUID = 1L;

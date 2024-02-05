@@ -1,20 +1,16 @@
-package com.srayasmin.projetomc.domain;
+package com.yasmin.projetomc.domain;
 
 import com.fasterxml.jackson.annotation.JsonIgnore;
-import com.srayasmin.projetomc.domain.enums.TipoCliente;
+
+import com.yasmin.projetomc.domain.enums.TipoCliente;
+import jakarta.persistence.*;
+
+import jakarta.persistence.*;
 import java.io.Serializable;
 import java.util.ArrayList;
 import java.util.HashSet;
 import java.util.List;
 import java.util.Set;
-
-import javax.persistence.CollectionTable;
-import javax.persistence.ElementCollection;
-import javax.persistence.Entity;
-import javax.persistence.GeneratedValue;
-import javax.persistence.GenerationType;
-import javax.persistence.Id;
-import javax.persistence.OneToMany;
 
 @Entity
 public class Cliente implements Serializable{
