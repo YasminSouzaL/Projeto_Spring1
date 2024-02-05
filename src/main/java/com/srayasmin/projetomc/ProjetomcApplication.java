@@ -20,15 +20,15 @@ import com.srayasmin.projetomc.domain.Pedido;
 import com.srayasmin.projetomc.domain.Produto;
 import com.srayasmin.projetomc.domain.enums.EstadoPagamento;
 import com.srayasmin.projetomc.domain.enums.TipoCliente;
-import com.srayasmin.projetomc.repositores.CategoriaRepository;
-import com.srayasmin.projetomc.repositores.CidadeRepository;
-import com.srayasmin.projetomc.repositores.EstadoRepository;
-import com.srayasmin.projetomc.repositores.PedidoRepository;
-import com.srayasmin.projetomc.repositores.ProdutoRepository;
-import com.srayasmin.projetomc.repositores.ItemPedidoRepository;
-import com.srayasmin.projetomc.repositores.ClienteRepository;
-import com.srayasmin.projetomc.repositores.EnderecoRepository;
-import com.srayasmin.projetomc.repositores.PagamentoRepository;
+import com.srayasmin.projetomc.repository.CategoriaRepository;
+import com.srayasmin.projetomc.repository.CidadeRepository;
+import com.srayasmin.projetomc.repository.ClienteRepository;
+import com.srayasmin.projetomc.repository.EnderecoRepository;
+import com.srayasmin.projetomc.repository.EstadoRepository;
+import com.srayasmin.projetomc.repository.ItemPedidoRepository;
+import com.srayasmin.projetomc.repository.PagamentoRepository;
+import com.srayasmin.projetomc.repository.PedidoRepository;
+import com.srayasmin.projetomc.repository.ProdutoRepository;
 
 
 @SpringBootApplication
@@ -71,7 +71,7 @@ public class ProjetomcApplication implements CommandLineRunner{
     public void run(String... args) throws Exception {
         Categoria cat1 = new Categoria(null, "Informática");
         Categoria cat2 = new Categoria(null, "Office");
-        
+
         Produto p1 = new Produto(null, "Computador", 2000.00);
         Produto p2 = new Produto(null, "Impressora", 800.00);
         Produto p3 = new Produto(null, "Mouse", 80.00);
@@ -104,7 +104,7 @@ public class ProjetomcApplication implements CommandLineRunner{
         // Salvando os estados e cidades no banco de dados
         estadoRepository.saveAll(Arrays.asList(est1, est2));
         cidadeRepository.saveAll(Arrays.asList(c1, c2, c3));
-    
+
 
         // Cliente e endereço:
         Cliente cli1 = new Cliente(null, "Maria Silva", "maria@email", "777777", TipoCliente.PESSOAFISICA);
@@ -115,13 +115,13 @@ public class ProjetomcApplication implements CommandLineRunner{
 
         Endereco e1 = new Endereco(null, "Rua Flores", "300", "Apto 303", "Jardim", "157245", cli1, c1);
         Endereco e2 = new Endereco(null, "Avenida Matos", "105", "Sala 800", "Centro", "157246", cli1, c2);
-        
+
         cli1.getEnderecos().addAll(Arrays.asList(e1, e2));
 
         // Salvando os clientes e endereços no banco de dados
         clienteRepository.saveAll(Arrays.asList(cli1, cli2));
         enderecoRepository.saveAll(Arrays.asList(e1, e2));
-        
+
         SimpleDateFormat sdf = new SimpleDateFormat("dd/MM/yyyy HH:mm");
         Pedido ped1 = new Pedido(null, sdf.parse("30/09/2017 10:32"),null,cli1, e1);
         Pedido ped2 = new Pedido(null, sdf.parse("10/10/2017 19:35"),null,cli1, e2);
@@ -131,7 +131,7 @@ public class ProjetomcApplication implements CommandLineRunner{
 
         Pagamento pagto2 = new PagamentoComBoleto(null, EstadoPagamento.PENDENTE, ped2, sdf.parse("20/10/2017 00:00"), null);
         ped2.setPagamento(pagto2);
-        
+
         cli1.getPedidos().addAll(Arrays.asList(ped1, ped2));
 
         // Salvando os pedidos e pagamentos no banco de dados
@@ -155,7 +155,7 @@ public class ProjetomcApplication implements CommandLineRunner{
         // Salvando os itens de pedido no banco de dados
         pedidoRepository.saveAll(Arrays.asList(ped1, ped2));
         pagamentoRepository.saveAll(Arrays.asList(pagto1, pagto2));
-        
+
         // Salvando os itens de pedido no banco de dados
         itemPedidoRepository.saveAll(Arrays.asList(ip1, ip2, ip3));
 

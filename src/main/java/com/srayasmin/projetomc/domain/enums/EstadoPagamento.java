@@ -1,4 +1,4 @@
-package com.yasmin.projetomc.domain.enums;
+package com.srayasmin.projetomc.domain.enums;
 
 public enum EstadoPagamento {
     PENDENTE(1, "Pendente"),

@@ -1,4 +1,4 @@
-package com.srayasmin.projetomc.repositores;
+package com.srayasmin.projetomc.repository;
 
 import com.srayasmin.projetomc.domain.Cliente;
 import org.springframework.data.jpa.repository.JpaRepository;

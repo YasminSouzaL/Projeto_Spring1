@@ -1,11 +1,8 @@
-package com.yasmin.projetomc.domain;
+package com.srayasmin.projetomc.domain;
 
 import com.fasterxml.jackson.annotation.JsonIgnore;
-
-import com.yasmin.projetomc.domain.enums.TipoCliente;
 import jakarta.persistence.*;
 
-import jakarta.persistence.*;
 import java.io.Serializable;
 import java.util.ArrayList;
 import java.util.HashSet;
@@ -33,7 +30,7 @@ public class Cliente implements Serializable{
     @OneToMany(mappedBy = "cliente")
     private List<Pedido> pedidos = new ArrayList<>();
 
-    public Cliente(){}
+    public Cliente(Integer id, String mariaSilva, String email, String number, com.srayasmin.projetomc.domain.enums.TipoCliente pessoafisica){}
 
     public Cliente(Integer id, String nome, String email, String cpfOuCnpj, TipoCliente tipo){
         super();

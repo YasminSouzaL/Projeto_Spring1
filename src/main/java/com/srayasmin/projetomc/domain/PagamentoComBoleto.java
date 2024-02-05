@@ -1,9 +1,8 @@
-package com.yasmin.projetomc.domain;
+package com.srayasmin.projetomc.domain;
 
 import com.fasterxml.jackson.annotation.JsonFormat;
+import jakarta.persistence.Entity;
 
-import com.yasmin.projetomc.domain.enums.EstadoPagamento;
-import jakarta.persistence.*;
 import java.util.Date;
 @Entity
 public class PagamentoComBoleto extends Pagamento{
@@ -15,7 +14,7 @@ public class PagamentoComBoleto extends Pagamento{
     @JsonFormat(pattern = "dd/MM/yyyy")
     private Date dataPagamento;
 
-    public PagamentoComBoleto() {
+    public PagamentoComBoleto(Integer id, com.srayasmin.projetomc.domain.enums.EstadoPagamento pendente, Pedido ped2, Date parse, Object dataPagamento) {
     }
 
     public PagamentoComBoleto(Integer id, EstadoPagamento estado, Pedido pedido, Date dataVencimento, Date dataPagamento){

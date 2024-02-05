@@ -1,8 +1,8 @@
-package com.yasmin.projetomc.domain;
+package com.srayasmin.projetomc.domain;
 
 import com.fasterxml.jackson.annotation.JsonFormat;
-
 import jakarta.persistence.*;
+
 import java.io.Serializable;
 import java.util.Date;
 import java.util.HashSet;

@@ -1,8 +1,7 @@
-package com.yasmin.projetomc.domain;
+package com.srayasmin.projetomc.domain;
 
 import jakarta.persistence.*;
 
-import jakarta.persistence.*;
 import java.io.Serializable;
 
 @Entity

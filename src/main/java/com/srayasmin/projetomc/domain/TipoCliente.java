@@ -1,4 +1,4 @@
-package com.yasmin.projetomc.domain.enums;
+package com.srayasmin.projetomc.domain;
 
 public enum TipoCliente{
     PESSOAFISICA(1, "Pessoa Física"),

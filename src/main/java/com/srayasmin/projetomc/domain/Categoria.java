@@ -1,6 +1,7 @@
-package com.yasmin.projetomc.domain;
+package com.srayasmin.projetomc.domain;
 
 import jakarta.persistence.*;
+
 import java.io.Serializable;
 import java.util.ArrayList;
 import java.util.List;

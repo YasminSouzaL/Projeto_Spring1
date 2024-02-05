@@ -3,6 +3,8 @@ package com.srayasmin.projetomc.services;
 import java.util.List;
 import java.util.Optional;
 
+
+import jakarta.persistence.Table;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.data.domain.Page;
 import org.springframework.data.domain.PageRequest;
@@ -11,12 +13,12 @@ import org.springframework.stereotype.Service;
 
 import com.srayasmin.projetomc.domain.Categoria;
 import com.srayasmin.projetomc.dto.CategoriaDTO;
-import com.srayasmin.projetomc.repositores.CategoriaRepository;
+import com.srayasmin.projetomc.repository.CategoriaRepository;
 import com.srayasmin.projetomc.services.exceptions.DataIntegrityException;
 import com.srayasmin.projetomc.services.exceptions.ObjectNotFoundException;
 
 
-@Service
+@Service @Table(name="categoria")
 public class CategoriaService {
 
     @Autowired

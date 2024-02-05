@@ -4,7 +4,7 @@ import java.util.Optional;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Service;
 import com.srayasmin.projetomc.domain.Cliente;
-import com.srayasmin.projetomc.repositores.ClienteRepository;
+import com.srayasmin.projetomc.repository.ClienteRepository;
 import com.srayasmin.projetomc.services.exceptions.ObjectNotFoundException;
 
 @Service

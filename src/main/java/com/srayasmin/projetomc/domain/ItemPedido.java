@@ -1,9 +1,9 @@
-package com.yasmin.projetomc.domain;
+package com.srayasmin.projetomc.domain;
 
 import com.fasterxml.jackson.annotation.JsonIgnore;
+import jakarta.persistence.EmbeddedId;
+import jakarta.persistence.Entity;
 
-
-import jakarta.persistence.*;
 import java.io.Serializable;
 
 @Entity

@@ -1,6 +1,9 @@
-package com.yasmin.projetomc.domain;
+package com.srayasmin.projetomc.domain;
 
-import jakarta.persistence.*;
+import jakarta.persistence.Embeddable;
+import jakarta.persistence.JoinColumn;
+import jakarta.persistence.ManyToOne;
+
 import java.io.Serializable;
 import java.util.Objects;
 

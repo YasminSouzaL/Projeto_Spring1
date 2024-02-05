@@ -1,9 +1,7 @@
-package com.yasmin.projetomc.domain;
+package com.srayasmin.projetomc.domain;
 
 import com.fasterxml.jackson.annotation.JsonIgnore;
-import com.yasmin.projetomc.domain.enums.EstadoPagamento;
 import jakarta.persistence.*;
-
 
 import java.io.Serializable;
 

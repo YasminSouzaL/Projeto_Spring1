@@ -1,4 +1,4 @@
-package com.srayasmin.projetomc.repositores;
+package com.srayasmin.projetomc.repository;
 
 import org.springframework.data.jpa.repository.JpaRepository;
 import org.springframework.stereotype.Repository;
