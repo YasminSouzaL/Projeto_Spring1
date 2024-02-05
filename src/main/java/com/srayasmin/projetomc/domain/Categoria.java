@@ -6,6 +6,8 @@ import java.io.Serializable;
 import java.util.ArrayList;
 import java.util.List;
 
+import org.springframework.lang.NonNull;
+
 @Entity
 public class Categoria implements Serializable{
     private static final long serialVersionUID = 1L;
@@ -13,6 +15,7 @@ public class Categoria implements Serializable{
     @GeneratedValue(strategy=GenerationType.IDENTITY)
     private Integer id;
     private String nome;
+    @NonNull
     @ManyToMany(mappedBy = "categorias")
     private List<Produto> produtos = new ArrayList<>();
 
@@ -69,10 +72,12 @@ public class Categoria implements Serializable{
         return true;
     }
 
+    @NonNull
     public List<Produto> getProdutos(){
         return produtos;
     }
 
+    @SuppressWarnings("null")
     public void setProdutos(List<Produto> produtos){
         this.produtos = produtos;
     }

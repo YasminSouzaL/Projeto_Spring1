@@ -7,33 +7,14 @@ import org.springframework.boot.CommandLineRunner;
 import org.springframework.boot.SpringApplication;
 import org.springframework.boot.autoconfigure.SpringBootApplication;
 
-import com.srayasmin.projetomc.domain.Categoria;
-import com.srayasmin.projetomc.domain.Cidade;
-import com.srayasmin.projetomc.domain.Cliente;
-import com.srayasmin.projetomc.domain.Endereco;
-import com.srayasmin.projetomc.domain.Estado;
-import com.srayasmin.projetomc.domain.ItemPedido;
-import com.srayasmin.projetomc.domain.Pagamento;
-import com.srayasmin.projetomc.domain.PagamentoComBoleto;
-import com.srayasmin.projetomc.domain.PagamentoComCartao;
-import com.srayasmin.projetomc.domain.Pedido;
-import com.srayasmin.projetomc.domain.Produto;
-import com.srayasmin.projetomc.domain.enums.EstadoPagamento;
-import com.srayasmin.projetomc.domain.enums.TipoCliente;
-import com.srayasmin.projetomc.repository.CategoriaRepository;
-import com.srayasmin.projetomc.repository.CidadeRepository;
-import com.srayasmin.projetomc.repository.ClienteRepository;
-import com.srayasmin.projetomc.repository.EnderecoRepository;
-import com.srayasmin.projetomc.repository.EstadoRepository;
-import com.srayasmin.projetomc.repository.ItemPedidoRepository;
-import com.srayasmin.projetomc.repository.PagamentoRepository;
-import com.srayasmin.projetomc.repository.PedidoRepository;
-import com.srayasmin.projetomc.repository.ProdutoRepository;
+import com.srayasmin.projetomc.domain.*;
+
+import com.srayasmin.projetomc.repository.*;
 
 
 @SpringBootApplication
 public class ProjetomcApplication implements CommandLineRunner{
-    
+
     @Autowired
     private CategoriaRepository categoriaRepository;
 
@@ -47,10 +28,10 @@ public class ProjetomcApplication implements CommandLineRunner{
     private CidadeRepository cidadeRepository;
 
     @Autowired
-    private ClienteRepository clienteRepository;
+    private EnderecoRepository enderecoRepository;
 
     @Autowired
-    private EnderecoRepository enderecoRepository;
+    private ClienteRepository clienteRepository;
 
     @Autowired
     private PedidoRepository pedidoRepository;
@@ -69,27 +50,27 @@ public class ProjetomcApplication implements CommandLineRunner{
     @SuppressWarnings("null")
     @Override
     public void run(String... args) throws Exception {
+        //criar Categoria
         Categoria cat1 = new Categoria(null, "Informática");
-        Categoria cat2 = new Categoria(null, "Office");
-
+        Categoria cat2 = new Categoria(null, "Escritório");
+        
+        //criar Produto
         Produto p1 = new Produto(null, "Computador", 2000.00);
         Produto p2 = new Produto(null, "Impressora", 800.00);
         Produto p3 = new Produto(null, "Mouse", 80.00);
-
-        // Associando os produtos às categorias
+        
+        //criar Categoria e Produto
         cat1.getProdutos().addAll(Arrays.asList(p1, p2, p3));
         cat2.getProdutos().addAll(Arrays.asList(p2));
-
-        // Associando as categorias aos produtos
+        
         p1.getCategorias().addAll(Arrays.asList(cat1));
         p2.getCategorias().addAll(Arrays.asList(cat1, cat2));
         p3.getCategorias().addAll(Arrays.asList(cat1));
-
-        // Salvando as categorias e produtos no banco de dados
+        
+        //Salvar Categoria e Produto
         categoriaRepository.saveAll(Arrays.asList(cat1, cat2));
         produtoRepository.saveAll(Arrays.asList(p1, p2, p3));
 
-        // Criando os estados e cidades:
         Estado est1 = new Estado(null, "Minas Gerais");
         Estado est2 = new Estado(null, "São Paulo");
 
@@ -97,16 +78,14 @@ public class ProjetomcApplication implements CommandLineRunner{
         Cidade c2 = new Cidade(null, "São Paulo", est2);
         Cidade c3 = new Cidade(null, "Campinas", est2);
 
-        // Associando as cidades aos estados
         est1.getCidades().addAll(Arrays.asList(c1));
         est2.getCidades().addAll(Arrays.asList(c2, c3));
 
-        // Salvando os estados e cidades no banco de dados
+        //Salvar Estado e Cidade
         estadoRepository.saveAll(Arrays.asList(est1, est2));
         cidadeRepository.saveAll(Arrays.asList(c1, c2, c3));
 
-
-        // Cliente e endereço:
+        //Criar Cliente
         Cliente cli1 = new Cliente(null, "Maria Silva", "maria@email", "777777", TipoCliente.PESSOAFISICA);
         cli1.getTelefones().addAll(Arrays.asList("777777", "888888"));
 
@@ -138,26 +117,18 @@ public class ProjetomcApplication implements CommandLineRunner{
         pedidoRepository.saveAll(Arrays.asList(ped1, ped2));
         pagamentoRepository.saveAll(Arrays.asList(pagto1, pagto2));
 
-        // Associando os produtos aos pedidos
         ItemPedido ip1 = new ItemPedido(ped1, p1, 0.00, 1, 2000.00);
         ItemPedido ip2 = new ItemPedido(ped1, p3, 0.00, 2, 80.00);
         ItemPedido ip3 = new ItemPedido(ped2, p2, 100.00, 1, 800.00);
 
-        // Associando os itens de pedido aos pedidos
         ped1.getItens().addAll(Arrays.asList(ip1, ip2));
         ped2.getItens().addAll(Arrays.asList(ip3));
 
-        // Associando os itens de pedido aos produtos
         p1.getItens().addAll(Arrays.asList(ip1));
         p2.getItens().addAll(Arrays.asList(ip3));
         p3.getItens().addAll(Arrays.asList(ip2));
 
-        // Salvando os itens de pedido no banco de dados
-        pedidoRepository.saveAll(Arrays.asList(ped1, ped2));
-        pagamentoRepository.saveAll(Arrays.asList(pagto1, pagto2));
-
-        // Salvando os itens de pedido no banco de dados
-        itemPedidoRepository.saveAll(Arrays.asList(ip1, ip2, ip3));
-
+        itemPedidoRepository.saveAll(Arrays.asList(ip1, ip2, ip3));        
+        
     }
 }

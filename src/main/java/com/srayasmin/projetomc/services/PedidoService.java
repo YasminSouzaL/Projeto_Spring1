@@ -14,8 +14,8 @@ public class PedidoService {
     @Autowired
     private PedidoRepository repo;
 
-    @SuppressWarnings("null")
     public Pedido buscar(Integer id) {
+        @SuppressWarnings("null")
         Optional<Pedido> obj = repo.findById(id);
         if(obj.isEmpty()) {
             throw new ObjectNotFoundException("Objeto não encontrado! Id: " + id

@@ -9,6 +9,7 @@ import java.util.HashSet;
 import java.util.List;
 import java.util.Set;
 
+
 @Entity
 public class Cliente implements Serializable{
     private static final long serialVersionUID = 1L;
@@ -19,6 +20,7 @@ public class Cliente implements Serializable{
     private String email;
     private String cpfOuCnpj;
     private Integer tipo;
+    
     @OneToMany(mappedBy = "cliente")
     private List<Endereco> enderecos = new ArrayList<>();
 
