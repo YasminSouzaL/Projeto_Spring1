@@ -89,7 +89,7 @@ public class ProjetomcApplication implements CommandLineRunner{
         cidadeRepository.saveAll(Arrays.asList(c1, c2, c3));
         
         //Criar Cliente
-        Cliente cli1 = new Cliente(null, "Maria Silva", "maria@email", "777777", TipoCliente.PESSOAFISICA);
+        Cliente cli1 = new Cliente(1, "Maria Silva", "maria@email", "777777", TipoCliente.PESSOAFISICA);
         cli1.getTelefones().addAll(Arrays.asList("777777", "888888"));
 
         Cliente cli2 = new Cliente(null, "Ana Costa", "ana@gmail", "888888", TipoCliente.PESSOAFISICA);
